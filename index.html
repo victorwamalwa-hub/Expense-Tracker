@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXPENSE TRACKER SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -11,5 +12,209 @@
         <p>Welcome to the Expense Tracking System!
             Keep track of your expenses and manage your budget effectively. 
         </p>
+        <p class="login-link"><a href="login.html">Login</a> | <a href="register.html">Register</a></p>
+
+        <div class="home-currency">
+            <h2>Current Currency</h2>
+            <label for="currency">Select Currency:</label>
+            <select id="currency" name="currency">
+                <option value="USD">USD - United States Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="GBP">GBP - British Pound</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="INR">INR - Indian Rupee</option>
+            </select>
+            <span id="selected-currency">Selected Currency: USD</span>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="card">
+            <h2>Expense Tracking Card</h2>
+            <form id="expense-form">
+                <div class="form-row">
+                    <label for="expense-amount">Amount:</label>
+                    <input type="number" id="expense-amount" name="expense-amount" step="0.01" required>
+                </div>
+                <div class="form-row">
+                    <label for="expense-category">Category:</label>
+                    <select id="expense-category" name="expense-category" required>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="expense-date">Date:</label>
+                    <input type="date" id="expense-date" name="expense-date" required>
+                </div>
+                <button type="submit">Add Expense</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Expense Summary</h2>
+            <div id="expense-summary">
+                <p>Total Expenses: <span id="total-expenses">0.00</span></p>
+                <p>Number of Expenses: <span id="expense-count">0</span></p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Expense List</h2>
+            <table id="expense-table">
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Expense rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <search class="card">
+            <h2>Search Expenses</h2>
+            <form id="search-form">
+                <div class="form-row">
+                    <label for="search-category">Category:</label>
+                    <select id="search-category" name="search-category">
+                        <option value="">All</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="search-date">Date:</label>
+                    <input type="date" id="search-date" name="search-date">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+        </search>   
+
+        <search class="card">
+            <h2>Filter Expenses</h2>
+            <form id="filter-form">
+                <div class="form-row">
+                    <label for="filter-category">Category:</label>
+                    <select id="filter-category" name="filter-category">
+                        <option value="">All</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="filter-date">Date:</label>
+                    <input type="date" id="filter-date" name="filter-date">
+                </div>
+                <button type="submit">Filter</button>
+            </form>
+            <div id="filter-results">
+                <!-- Filter results will be displayed here -->
+            </div>
+        </search>   
+
+        <section class="card">
+            <h2>Export Expenses</h2>
+            <button id="export-button">Export to CSV</button>
+        </section>  
+
+        <section class="card">
+            <h2>Import Expenses</h2>
+            <form id="import-form" enctype="multipart/form-data">
+                <div class="form-row">
+                    <label for="import-file">Select CSV File:</label>
+                    <input type="file" id="import-file" name="import-file" accept=".csv" required>
+                </div>
+                <button type="submit">Import</button>
+            </form>
+        </section>      
+
+        <section class="card">
+            <h2>Expense Chart</h2>
+            <canvas id="expense-chart" width="400" height="200"></canvas>
+        </section>  
+
+        <search class="card">
+            <h2>Search Expenses</h2>
+            <form id="search-form">
+                <div class="form-row">
+                    <label for="search-category">Category:</label>
+                    <select id="search-category" name="search-category">
+                        <option value="">All</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="search-date">Date:</label>
+                    <input type="date" id="search-date" name="search-date">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+        </search>   
+        
+        <section class="card">
+            <h2>Filter Expenses</h2>
+            <form id="filter-form">
+                <div class="form-row">
+                    <label for="filter-category">Category:</label>
+                    <select id="filter-category" name="filter-category">
+                        <option value="">All</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="filter-date">Date:</label>
+                    <input type="date" id="filter-date" name="filter-date">
+                </div>
+                <button type="submit">Filter</button>
+            </form>
+            <div id="filter-results">
+                <!-- Filter results will be displayed here -->
+            </div>
+        </section>  
+
+        <section class="card">
+            <h2>Export Expenses</h2>
+            <button id="export-button">Export to CSV</button>
+        </section>  
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Expense Tracking System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JS here
+    </script>
+
+
 </body>
 </html>
